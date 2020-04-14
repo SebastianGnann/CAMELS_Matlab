@@ -223,15 +223,6 @@ for i = 1:length(gauge_id)
     
     ID = gauge_id(i);
     [P{i}, PET{i}, Q{i}, T{i}] = loadCatchmentCAMELSGB(ID,path_time_series);
-    loadSuccesful = true;
-    
-    if sum(isnan(P{i}(:,2))) > 0
-        disp('NaN P');
-    elseif sum(isnan(PET{i}(:,2))) > 0
-        disp('NaN PET');
-    elseif sum(isnan(Q{i}(:,2))) > 0
-        disp('NaN Q');
-    end
     
 end
 

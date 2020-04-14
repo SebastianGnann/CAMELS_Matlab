@@ -177,15 +177,6 @@ for i = 1:length(gauge_id)
     
     ID = gauge_id(i);
     [P{i}, PET{i}, Q{i}, T{i}] = loadCatchmentCAMELS(ID,path_time_series);
-    
-    if sum(isnan(P{i}(:,2))) > 0
-        disp('NaN P');
-    elseif sum(isnan(PET{i}(:,2))) > 0
-        disp('NaN PET');
-    elseif sum(isnan(Q{i}(:,2))) > 0
-        disp('NaN Q');
-    end
-    
     flow_perc_complete(i) = 100*(1-sum(isnan(Q{i}(:,2)))./length(Q{i}(:,2)));
     
 end
