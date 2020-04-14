@@ -1,3 +1,3 @@
-# Data_preparation
-Loads CAMELS and CAMELS-GB data from original files and processes it to obtain Matlab struc files.
-CAMELS and CAMELS-GB data is saved locally.
+# CAMELS_Matlab
+Loads CAMELS and CAMELS-GB data from original files and saves data as Matlab struc files.
+CAMELS and CAMELS-GB data are saved locally.
