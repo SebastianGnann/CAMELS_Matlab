@@ -381,5 +381,5 @@ CAMELS_GB_data.Q = Q;
 CAMELS_GB_data.T = T;
 
 % save file to table
-save('./Data_preparation/Data/CAMELS_GB_data_processed.mat','CAMELS_GB_data')
+save('./CAMELS_Matlab/Data/CAMELS_GB_data.mat','CAMELS_GB_data')
 

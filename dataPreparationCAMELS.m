@@ -20,7 +20,7 @@
 %   - camels_attributes_v2.0
 %   - basin_timeseries_v1p2_modelOutput_daymet (used for time series)
 
-disp('This function uses local paths. Change to local path where CAMELS-GB data are stored.')
+disp('This function uses local paths. Change to local path where CAMELS data are stored.')
 
 path_catchment_attributes = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\camels_attributes_v2.0\"; % change to your local path
 path_time_series = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\basin_timeseries_v1p2_modelOutput_daymet\model_output_daymet\model_output\flow_timeseries\daymet\"; % change to your local path
@@ -270,4 +270,4 @@ CAMELS_data.Q = Q;
 CAMELS_data.T = T;
 
 % save file to table
-save('./CAMELS_data_preparation/Data/CAMELS_data_processed.mat','CAMELS_data')
+save('./CAMELS_Matlab/Data/CAMELS_data.mat','CAMELS_data')
