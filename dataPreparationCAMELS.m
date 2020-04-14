@@ -176,7 +176,7 @@ for i = 1:length(gauge_id)
     end
     
     ID = gauge_id(i);
-    [P, PET, Q, T] = loadCatchment_ID_CAMELS(ID,path_time_series);
+    [P{i}, PET{i}, Q{i}, T{i}] = loadCatchment_ID_CAMELS(ID,path_time_series);
     
     if sum(isnan(P(:,2))) > 0
         disp('NaN P');
