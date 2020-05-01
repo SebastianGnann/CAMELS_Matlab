@@ -1,4 +1,4 @@
-function [P, PET, Q, T] = loadCatchmentCAMELS(ID,path)
+function [P, PET, PET_adjusted, Q, T] = loadCatchmentCAMELS(ID,path)
 %loadCatchmentCAMELS Loads catchment data (P, PET, Q, T) and creates 
 %   name-strings (for CAMELS format)
 %
@@ -9,6 +9,8 @@ function [P, PET, Q, T] = loadCatchmentCAMELS(ID,path)
 %   OUTPUT
 %   P: precipitation [mm/d]
 %   PET: potential evapotranspiration [mm/d]
+%   PET_adjusted: adjusted potential evapotranspiration [mm/d] using
+%   standard coefficient of 1.26
 %   Q: streamflow [mm/d]
 %   T: T [°C]
 %
@@ -31,7 +33,9 @@ while foundID == false
     i_str = i_str_list(i);
     try
         file_ID_model = strcat(path,i_str,'\',num2str(ID,'%08d'),'_05_model_output.txt');
-        txt=fileread(file_ID_model);
+        txt_data=fileread(file_ID_model);
+        file_ID_parameters = strcat(path,i_str,'\',num2str(ID,'%08d'),'_05_model_parameters.txt');
+        txt_para=fileread(file_ID_parameters);
         foundID = true;
     catch
         disp('')
@@ -42,9 +46,15 @@ end
 % NOTE: NOW version 05 of Newman dataset
 % YR MNTH DY HR SWE PRCP RAIM TAIR PET ET MOD_RUN OBS_RUN
 
-data_model_cell = textscan(txt,...
+data_model_cell = textscan(txt_data,...
     '%f %f %f %f %f %f %f %f %f %f %f %f', ...
     'Delimiter', '\t', 'HeaderLines', 1);
+
+data_parameter_cell = textscan(txt_para,...
+    '%s %f', ...
+    'Delimiter', '\t', 'HeaderLines', 0);
+PET_coefficient = data_parameter_cell{2}(41);
+% disp(PET_coefficient)
 
 Y = data_model_cell{1};
 M = data_model_cell{2};
@@ -54,12 +64,13 @@ date = datenum(Y,M,D);
 Q_temp = data_model_cell{12};
 Q_temp(Q_temp==-999) = NaN;
 P_temp = data_model_cell{6};
-PET_temp = data_model_cell{9}; % recalculate PET?
+PET_temp = data_model_cell{9}; 
 T_temp = data_model_cell{8};
 
 Q = [date Q_temp];
 P = [date P_temp];
 PET = [date PET_temp];
+PET_adjusted = [date (1.26/PET_coefficient).*PET_temp]; % adjust PET
 T = [date T_temp];
 
 end

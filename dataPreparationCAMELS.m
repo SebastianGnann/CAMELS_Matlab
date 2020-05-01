@@ -165,6 +165,7 @@ root_depth_99 = (camels_vege_data{:,10});
 flow_perc_complete = NaN(length(gauge_id),1);
 P = cell(length(gauge_id),1); % precipitation
 PET = cell(length(gauge_id),1); % potential evapotranspiration
+PET_adjusted = cell(length(gauge_id),1); % adjusted potential evapotranspiration (using 1.26 as coefficient)
 Q = cell(length(gauge_id),1); % streamflow
 T = cell(length(gauge_id),1); % temperature
 
@@ -176,7 +177,7 @@ for i = 1:length(gauge_id)
     end
     
     ID = gauge_id(i);
-    [P{i}, PET{i}, Q{i}, T{i}] = loadCatchmentCAMELS(ID,path_time_series);
+    [P{i}, PET{i}, PET_adjusted{i}, Q{i}, T{i}] = loadCatchmentCAMELS(ID,path_time_series);
     flow_perc_complete(i) = 100*(1-sum(isnan(Q{i}(:,2)))./length(Q{i}(:,2)));
     
 end
@@ -257,6 +258,7 @@ CAMELS_data.root_depth_99 = root_depth_99;
 CAMELS_data.flow_perc_complete = flow_perc_complete;
 CAMELS_data.P = P;
 CAMELS_data.PET = PET;
+CAMELS_data.PET_adjusted = PET_adjusted;
 CAMELS_data.Q = Q;
 CAMELS_data.T = T;
 
