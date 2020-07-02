@@ -28,7 +28,7 @@ path_catchment_attributes = strcat(path_camelsGB,'CAMELSGB_Catchment_Attributes.
 if exist(path_camelsGB) == 7
     addpath(genpath(path_camelsGB)); % not actually needed since the files are just loaded
 else
-    error('Cannot find local path. You can download CAMELS-GB from <tba>.')
+    error('Cannot find local path. You can download CAMELS-GB from https://catalogue.ceh.ac.uk/documents/8344e4f3-d2ea-44f5-8afa-86d2987543a9.')
 end
 
 %% load catchment attributes
