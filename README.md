@@ -3,7 +3,7 @@ Loads CAMELS, CAMELS-GB, and CAMELS-BR data from original files and saves data a
 CAMELS, CAMELS-GB, and CAMELS-BR data are saved locally.
 
 To limit file size, only one P and PET product is loaded:
-- for CAMELS US, PET uses a calibrated Priestley-Taylor coefficient which is now set to the default value of 1.26
+- for CAMELS US, PET is calculated using a calibrated Priestley-Taylor coefficient which is now set to the default value of 1.26
 - for CAMELS GB, PET with interception correction is used
 - for CAMELS BR, GLEAM PET, CHIRPS P, and CPC T are used
 
