@@ -1,4 +1,4 @@
-function [P, PET, PET_adjusted, Q, T] = loadCatchmentCAMELS(ID,path)
+function [P, PET, Q, T] = loadCatchmentCAMELS(ID,path)
 %loadCatchmentCAMELS Loads catchment data (P, PET, Q, T) and creates 
 %   name-strings (for CAMELS format)
 %
@@ -8,9 +8,8 @@ function [P, PET, PET_adjusted, Q, T] = loadCatchmentCAMELS(ID,path)
 %
 %   OUTPUT
 %   P: precipitation [mm/d]
-%   PET: potential evapotranspiration [mm/d]
-%   PET_adjusted: adjusted potential evapotranspiration [mm/d] using
-%   standard coefficient of 1.26
+%   PET: potential evapotranspiration (adjusted using standard coefficient
+%   of 1.26) [mm/d]
 %   Q: streamflow [mm/d]
 %   T: T [°C]
 %
@@ -69,8 +68,8 @@ T_temp = data_model_cell{8};
 
 Q = [date Q_temp];
 P = [date P_temp];
-PET = [date PET_temp];
-PET_adjusted = [date (1.26/PET_coefficient).*PET_temp]; % adjust PET
+% PET = [date PET_temp]; % calibrated PET
+PET = [date (1.26/PET_coefficient).*PET_temp]; % adjusted PET
 T = [date T_temp];
 
 end

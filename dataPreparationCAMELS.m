@@ -48,7 +48,7 @@ fclose(file_ID_topo);
 file_ID_clim = fopen(strcat(path_catchment_attributes,'camels_clim.txt'),'r');
 file_clim = fread(file_ID_clim,'*char');
 file_clim = strrep(file_clim','NA','NaN'); % replace NA with NaN
-camels_climate_data = textscan(file_clim,'%f %f %f %f %f %f %f %f %q %f %f %q',...
+camels_climate_data = textscan(file_clim,'%f %f %f %f %f %f %f %f %s %f %f %s',...
     'Delimiter',';','headerlines',1);
 fclose(file_ID_clim);
 
@@ -177,7 +177,7 @@ for i = 1:length(gauge_id)
     end
     
     ID = gauge_id(i);
-    [P{i}, PET{i}, PET_adjusted{i}, Q{i}, T{i}] = loadCatchmentCAMELS(ID,path_time_series);
+    [P{i}, PET{i}, Q{i}, T{i}] = loadCatchmentCAMELS(ID,path_time_series);
     flow_perc_complete(i) = 100*(1-sum(isnan(Q{i}(:,2)))./length(Q{i}(:,2)));
     
 end
@@ -258,7 +258,6 @@ CAMELS_data.root_depth_99 = root_depth_99;
 CAMELS_data.flow_perc_complete = flow_perc_complete;
 CAMELS_data.P = P;
 CAMELS_data.PET = PET;
-CAMELS_data.PET_adjusted = PET_adjusted;
 CAMELS_data.Q = Q;
 CAMELS_data.T = T;
 
