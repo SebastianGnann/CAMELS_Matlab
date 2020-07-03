@@ -37,7 +37,7 @@ end
 % location
 % gauge_id gauge_name gauge_region gauge_lat gauge_lon
 file_ID_loca = fopen(strcat(path_catchment_attributes,'camels_br_location.txt'),'r');
-file_loca = fread(file_ID_topo,'*char');
+file_loca = fread(file_ID_loca,'*char');
 camels_BR_loca_data = textscan(file_loca,'%f %s %s %f %f',...
     'Delimiter',' ','headerlines',1);
 fclose(file_ID_loca);

@@ -44,7 +44,7 @@ P_temp = data_model_cell{4};
 P = [date P_temp];
 
 % pot. evapotranspiration GLEAM
-file_ID_model = strcat(path,'7_CAMELS_BR_evapotransp_gleam','\',num2str(ID,'%08d'),'_evapotransp_gleam.txt');
+file_ID_model = strcat(path,'9_CAMELS_BR_potential_evapotransp_gleam','\',num2str(ID,'%08d'),'_potential_evapotransp_gleam.txt');
 txt_data=fileread(file_ID_model);
 data_model_cell = textscan(txt_data,'%f %f %f %f','Delimiter',' ', 'HeaderLines', 1);
 Y = data_model_cell{1};
