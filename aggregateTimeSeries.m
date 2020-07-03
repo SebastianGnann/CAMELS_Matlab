@@ -1,10 +1,10 @@
 function [X_annual, X_monthly, year_list] = ...
-    aggregateTimeSeries(X, useWaterYear) 
+    aggregateTimeSeries(X, start_water_year)
 %aggregateTimeSeries Calculate annual and monthly data from time series.
 %
 %   INPUT
 %   X: time series (datenum, values)
-%   useWaterYear: use water year instead (starting from 1st Oct) (logical)
+%   start_water_year: first month of water year (default: 1, i.e. January)
 %
 %   OUTPUT
 %   X_annual: annual values
@@ -16,7 +16,7 @@ function [X_annual, X_monthly, year_list] = ...
 %   Sebastian Gnann, sebastian.gnann@bristol.ac.uk (2020)
 
 if nargin < 2
-    useWaterYear = false;
+    start_water_year = 1;
 end
 
 % get years and months
@@ -34,25 +34,18 @@ X_annual = NaN(year_end-year_start,1);
 X_monthly = NaN(year_end-year_start,12);
 
 % extract years, months, etc.
-for y = 1:length(year_list)    
-    year = year_list(y);    
-    if useWaterYear        
-        X_water_year = ...
-            [X_temp(years==year-1 & months>=10); ...
-            X_temp(years==year & months<10)];
-        X_annual(y) = mean(X_water_year);        
-        for m = 1:9
-            X_monthly(y,m+3) = mean(X_temp(years==year & months==m));
-        end        
-        for m = 10:12
-            X_monthly(y,m-9) = mean(X_temp(years==year-1 & months==m));
-        end        
-    else
-        X_year = X_temp(years==year);
-        X_annual(y) = mean(X_year);              
-        for m = 1:12
-            X_monthly(y,m) = mean(X_temp(years==year & months==m));            
-        end        
+for y = 1:length(year_list)
+    year = year_list(y);
+    X_water_year = ...
+        [X_temp(years==year & months>=start_water_year); ...
+        X_temp(years==year+1 & months<start_water_year)];
+    X_annual(y) = mean(X_water_year);
+    % check again
+    for m = start_water_year:12
+        X_monthly(y,m-start_water_year+1) = mean(X_temp(years==year & months==m));
+    end
+    for m = 1:start_water_year-1
+        X_monthly(y,m+13-start_water_year) = mean(X_temp(years==year+1 & months==m));
     end
 end
 
