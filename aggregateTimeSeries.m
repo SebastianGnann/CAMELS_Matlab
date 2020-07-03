@@ -39,13 +39,13 @@ for y = 1:length(year_list)
     X_water_year = ...
         [X_temp(years==year & months>=start_water_year); ...
         X_temp(years==year+1 & months<start_water_year)];
-    X_annual(y) = mean(X_water_year);
+    X_annual(y) = mean(X_water_year,'omitnan');
     % check again
     for m = start_water_year:12
-        X_monthly(y,m-start_water_year+1) = mean(X_temp(years==year & months==m));
+        X_monthly(y,m-start_water_year+1) = mean(X_temp(years==year & months==m),'omitnan');
     end
     for m = 1:start_water_year-1
-        X_monthly(y,m+13-start_water_year) = mean(X_temp(years==year+1 & months==m));
+        X_monthly(y,m+13-start_water_year) = mean(X_temp(years==year+1 & months==m),'omitnan');
     end
 end
 
