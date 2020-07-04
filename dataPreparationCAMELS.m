@@ -2,6 +2,7 @@
 %   - Creates structure with CAMELS catchment data and catchment attributes
 %   - Uses local paths (large CAMELS files)
 %   - NA values in txt files are replaced with NaN values
+%   - Adjusts PET data to use standard Priestley-Taylor coefficient of 1.26
 %
 %   ---
 %
@@ -16,18 +17,17 @@
 %% load CAMELS data
 
 % Before you can run the code you need to extract CAMELS data and store
-% them in the correct folder. The following folders are required:
-%   - camels_attributes_v2.0
-%   - basin_timeseries_v1p2_modelOutput_daymet (used for time series)
+% them in the correct folder. The following folders/files are required:
+%   \CAMELS_v2.0
+%   	\camels_attributes_v2.0
+%       \basin_timeseries_v1p2_modelOutput_daymet (used for time series)
 
 disp('This function uses local paths. Change to local path where CAMELS data are stored.')
 
 path_catchment_attributes = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\camels_attributes_v2.0\"; % change to your local path
 path_time_series = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\basin_timeseries_v1p2_modelOutput_daymet\model_output_daymet\model_output\flow_timeseries\daymet\"; % change to your local path
 
-if exist(path_catchment_attributes) == 7
-    addpath(genpath(path_catchment_attributes)); % not actually needed since the files are just loaded
-else
+if ~exist(path_catchment_attributes) == 7
     error('Cannot find local path. You can download CAMELS from https://ral.ucar.edu/solutions/products/camels.')
 end
 
@@ -165,7 +165,6 @@ root_depth_99 = (camels_vege_data{:,10});
 flow_perc_complete = NaN(length(gauge_id),1);
 P = cell(length(gauge_id),1); % precipitation
 PET = cell(length(gauge_id),1); % potential evapotranspiration
-PET_adjusted = cell(length(gauge_id),1); % adjusted potential evapotranspiration (using 1.26 as coefficient)
 Q = cell(length(gauge_id),1); % streamflow
 T = cell(length(gauge_id),1); % temperature
 

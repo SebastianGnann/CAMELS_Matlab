@@ -6,28 +6,26 @@
 %
 %   Sebastian Gnann, sebastian.gnann@bristol.ac.uk (2020)
 
-clc
-clear all
-close all
+% clc
+% clear all
+% close all
 
 %% add directories for functions to path
 
 %% load CAMELS data
 
 % Before you can run the code you need to extract CAMELS data and store
-% them in the correct folder. The following folders are required:
-%   - camels_attributes_v2.0
-%   - basin_timeseries_v1p2_modelOutput_daymet (used for time series)
+% them in the correct folder. The following folders/files are required:
+%   \CAMELS_GB
+%   	\CAMELS_GB_Timeseries
+%   	\CAMELSGB_Catchment_Attributes.xlsx
 
 disp('This function uses local paths. Change to local path where CAMELS-GB data are stored.')
 
-path_camelsGB = "C:\Users\sg16200\Local Documents\CAMELS_GB\"; % change to your local path
-path_time_series = strcat(path_camelsGB,'CAMELS_GB_Timeseries\'); % change to your local path
-path_catchment_attributes = strcat(path_camelsGB,'CAMELSGB_Catchment_Attributes.xlsx'); % change to your local path
+path_time_series = "C:\Users\sg16200\Local Documents\CAMELS_GB\CAMELS_GB_Timeseries\"; % change to your local path
+path_catchment_attributes = "C:\Users\sg16200\Local Documents\CAMELS_GB\CAMELSGB_Catchment_Attributes.xlsx"; % change to your local path
 
-if exist(path_camelsGB) == 7
-    addpath(genpath(path_camelsGB)); % not actually needed since the files are just loaded
-else
+if ~exist(path_time_series) == 7
     error('Cannot find local path. You can download CAMELS-GB from https://catalogue.ceh.ac.uk/documents/8344e4f3-d2ea-44f5-8afa-86d2987543a9.')
 end
 
@@ -208,7 +206,6 @@ reservoir_year_first = camels_GB_human_data(:,12);
 reservoir_year_last = camels_GB_human_data(:,13);
 
 %% load time series
-% intialise arrays to store some metrics and hydrological signatures
 P = cell(length(gauge_id),1); % precipitation
 PET = cell(length(gauge_id),1); % potential evapotranspiration
 Q = cell(length(gauge_id),1); % streamflow

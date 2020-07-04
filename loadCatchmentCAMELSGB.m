@@ -8,7 +8,7 @@ function [P, PET, Q, T] = loadCatchmentCAMELSGB(ID,path)
 %
 %   OUTPUT
 %   P: precipitation [mm/d]
-%   PET: potential evapotranspiration (with interception correction) [mm/d]
+%   PET: potential evapotranspiration (without interception correction) [mm/d]
 %   Q: streamflow [mm/d]
 %   T: T [°C]
 %
@@ -41,9 +41,9 @@ Q_temp = data_model_cell{7};
 % Q_temp = data_model_cell{8};
 Q_temp(Q_temp==-999) = NaN;
 P_temp = data_model_cell{4};
-% PET_temp = data_model_cell{4};
-PET_temp = data_model_cell{9}; % with interception correction
-T_temp = data_model_cell{5};
+PET_temp = data_model_cell{5};
+% PET_temp = data_model_cell{9}; % with interception correction
+T_temp = data_model_cell{6};
 
 Q = [date Q_temp];
 P = [date P_temp];
