@@ -22,6 +22,9 @@
 %   	\camels_attributes_v2.0
 %       \basin_timeseries_v1p2_modelOutput_daymet (used for time series)
 
+% ### TO DO ### compare model output to original data 
+% cubicft/s to mm/day: q = (Q/35.3146667)*(86.4/A)
+
 disp('This function uses local paths. Change to local path where CAMELS data are stored.')
 
 path_catchment_attributes = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\camels_attributes_v2.0\"; % change to your local path
