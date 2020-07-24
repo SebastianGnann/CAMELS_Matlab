@@ -25,12 +25,11 @@ end
 
 file_ID = strcat(path,'CAMELS_GB_hydromet_timeseries_',num2str(ID),'_19701001-20150930.csv');
 
-
-
 % date	precipitation	pet	temperature	discharge_spec	discharge_vol	peti	humidity	shortwave_rad	longwave_rad	windspeed
 [data,data_str] = xlsread(file_ID);
 
-date = datenum(data_str(2:end,1));
+formatIn = 'dd/mm/yyyy';
+date = datenum(data_str(2:end,1),formatIn);
 
 Q_temp = data(:,4);
 P_temp = data(:,1);
