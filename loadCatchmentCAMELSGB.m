@@ -23,33 +23,53 @@ end
 
 % path = "C:\Users\sg16200\Local Documents\CAMELS_GB\CAMELS_GB_Timeseries\";
 
-file_ID_model = strcat(path,'CAMELS_GB_hydromet_timeseries_',num2str(ID),'.txt');
-txt=fileread(file_ID_model);
+file_ID = strcat(path,'CAMELS_GB_hydromet_timeseries_',num2str(ID),'_19701001-20150930.csv');
 
-% YYYY	MM	DD	RAIN	PET	TEMPERATURE	DISCHARGE_MM	DISCHARGE_M3S	PETI	HUMIDITY	SWR	LWR	WINDSPEED
 
-data_model_cell = textscan(txt,...
-    '%f %f %f %f %f %f %f %f %f %f %f %f %f', ...
-    'Delimiter', '\t', 'HeaderLines', 1);
 
-Y = data_model_cell{1};
-M = data_model_cell{2};
-D = data_model_cell{3};
-date = datenum(Y,M,D);
+% date	precipitation	pet	temperature	discharge_spec	discharge_vol	peti	humidity	shortwave_rad	longwave_rad	windspeed
+[data,data_str] = xlsread(file_ID);
 
-Q_temp = data_model_cell{7};
-% Q_temp = data_model_cell{8};
-Q_temp(Q_temp==-999) = NaN;
-P_temp = data_model_cell{4};
-PET_temp = data_model_cell{5};
-% PET_temp = data_model_cell{9}; % with interception correction
-T_temp = data_model_cell{6};
+date = datenum(data_str(2:end,1));
+
+Q_temp = data(:,4);
+P_temp = data(:,1);
+PET_temp = data(:,2);
+% PET_temp = data(:,6); % with interception correction
+T_temp = data(:,3);
 
 Q = [date Q_temp];
 P = [date P_temp];
 % PET = [date PET_temp];
 PET = [date PET_temp];
 T = [date T_temp];
+
+%{ 
+txt=fileread(file_ID);
+% YYYY	MM	DD	RAIN	PET	TEMPERATURE	DISCHARGE_MM	DISCHARGE_M3S	PETI	HUMIDITY	SWR	LWR	WINDSPEED
+data_cell = textscan(txt,...
+    '%f %f %f %f %f %f %f %f %f %f %f %f %f', ...
+    'Delimiter', '\t', 'HeaderLines', 1);
+
+% Y = data_cell{1};
+% M = data_cell{2};
+% D = data_cell{3};
+% date = datenum(Y,M,D);
+
+% Q_temp = data_cell{7};
+% % Q_temp = data_cell{8};
+% Q_temp(Q_temp==-999) = NaN;
+% P_temp = data_cell{4};
+% PET_temp = data_cell{5};
+% % PET_temp = data_cell{9}; % with interception correction
+% T_temp = data_cell{6};
+% 
+% Q = [date Q_temp];
+% P = [date P_temp];
+% % PET = [date PET_temp];
+% PET = [date PET_temp];
+% T = [date T_temp];
+%}
 
 end
 
