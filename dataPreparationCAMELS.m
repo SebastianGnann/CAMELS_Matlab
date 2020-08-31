@@ -27,7 +27,7 @@
 
 disp('This function uses local paths. Change to local path where CAMELS data are stored.')
 
-path_catchment_attributes = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\camels_attributes_v2.0\"; % change to your local path
+path_catchment_attributes = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\camels_attributes_v2.0\camels_attributes_v2.0\"; % change to your local path
 path_time_series = "C:\Users\sg16200\Local Documents\CAMELS_v2.0\basin_timeseries_v1p2_modelOutput_daymet\model_output_daymet\model_output\flow_timeseries\daymet\"; % change to your local path
 
 if ~exist(path_catchment_attributes) == 7
