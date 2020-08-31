@@ -1,9 +1,8 @@
 function [P, PET, Q, T] = loadCatchmentCAMELS(ID,path)
-%loadCatchmentCAMELS Loads catchment data (P, PET, Q, T) and creates 
-%   name-strings (for CAMELS format)
+%loadCatchmentCAMELS Loads catchment data (P, PET, Q, T)
 %
 %   INPUT
-%   ID: string with station ID (or catchment ID)
+%   ID: catchment ID
 %   path: file path
 %
 %   OUTPUT

@@ -1,5 +1,5 @@
 %% Data preparation for CAMELS BR data:
-%   - Creates structure with CAMELS catchment data and catchment attributes
+%   - Creates struct file with CAMELS-BR time series and attributes
 %   - Uses local paths (large CAMELS files)
 %   - NA values in txt files are replaced with NaN values
 %   - Loads CHIRPS P and GLEAM PET data

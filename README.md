@@ -1,6 +1,6 @@
 # CAMELS_Matlab
-Loads CAMELS, CAMELS-CL, CAMELS-GB, and CAMELS-BR data from original files and saves data as Matlab struc files.
-The data and the resulting struc files are saved locally, you can find the links to the datasets below.
+Loads CAMELS, CAMELS-CL, CAMELS-GB, and CAMELS-BR data and saves data as Matlab struct files.
+The data and the resulting struct files are saved locally, you can find the links to the datasets below.
 
 To limit file size, only one P and PET product is loaded:
 - for CAMELS US, PET is calculated using a calibrated Priestley-Taylor coefficient which is now set to the default value of 1.26. Observed time series are extracted from the model output files.

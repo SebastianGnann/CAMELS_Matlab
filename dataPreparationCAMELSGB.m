@@ -1,6 +1,7 @@
 %% Data preparation for CAMELS-GB data:
-%   - Create structure with CAMELS GB catchment data and attributes
+%   - eate struct file with CAMELS-GB time series and attributes
 %   - Uses local paths (large CAMELS-GB files)
+%   - Uses PET without interception correction
 %
 %   ---
 %
