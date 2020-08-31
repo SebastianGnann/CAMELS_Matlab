@@ -1,5 +1,5 @@
 %% Data preparation for CAMELS-CL data:
-%   - Create structure with CAMELS CL catchment data and attributes
+%   - Create struct file with CAMELS-CL time series and attributes
 %   - Uses local paths (large CAMELS-CL files)
 %   - Uses MSWEP P and HARGREAVES PET data for time series
 %

@@ -1,7 +1,7 @@
 function [P, PET, Q, T] = loadCatchmentCAMELSCL(...
     index,Q_table,Q_date,P_table,P_date,PET_table,PET_date,T_table,T_date)
-%loadCatchmentCAMELSCL Loads catchment data (P, PET, Q, T) and creates 
-%   name-strings (for CAMELS-CL format)
+%loadCatchmentCAMELSCL Loads catchment data (P, PET, Q, T) 
+%   (for CAMELS-CL format)
 %
 %   INPUT
 %   index: index of catchment (1 is first catchment in list)
