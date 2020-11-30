@@ -3,6 +3,8 @@
 %   - Uses local paths (large CAMELS files)
 %   - NA values in txt files are replaced with NaN values
 %   - Loads CHIRPS P and GLEAM PET data
+%   - Uses data that came alongside discussion paper and not final
+%   published version
 %
 %   ---
 %
@@ -114,10 +116,24 @@ fclose(file_ID_qual);
 gauge_id = camels_BR_climate_data{:,1};
 
 % location
-gauge_name = camels_BR_loca_data{:,2};
-gauge_region = camels_BR_loca_data{:,3};
-gauge_lat = camels_BR_loca_data{:,4};
-gauge_lon = camels_BR_loca_data{:,5};
+gauge_id_tmp = camels_BR_loca_data{:,1};
+gauge_name_tmp = camels_BR_loca_data{:,2};
+gauge_region_tmp = camels_BR_loca_data{:,3};
+gauge_lat_tmp = camels_BR_loca_data{:,4};
+gauge_lon_tmp = camels_BR_loca_data{:,5};
+% location is provided for more than the 897 selected catchments, so we
+% need to pick only the location of the 897 catchments of interest
+gauge_name = strings(size(gauge_id));
+gauge_region = strings(size(gauge_id));
+gauge_lat = NaN(size(gauge_id));
+gauge_lon  = NaN(size(gauge_id));
+for i = 1:length(gauge_name)
+    index = find(gauge_id_tmp==gauge_id(i));
+    gauge_name(i) = gauge_name_tmp(index);
+    gauge_region(i) = gauge_region_tmp(index);
+    gauge_lat(i) = gauge_lat_tmp(index);
+    gauge_lon(i) = gauge_lon_tmp(index);
+end
 
 % topography
 elev_gauge = camels_BR_topo_data{:,2};
