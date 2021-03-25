@@ -1,4 +1,4 @@
 #
 Data/*.mat
 *.asv
-aggregateTimeSeries_Old.m
+Old/*
