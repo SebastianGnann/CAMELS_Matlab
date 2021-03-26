@@ -222,7 +222,7 @@ CAMELS_US_data.T = T;
 
 % save the struct file
 if save_struct
-    save('CAMELS_Matlab/Data/CAMELS_US_data.mat','CAMELS_US_data')
+    save('CAMELS_Matlab/Data/CAMELS_US_data.mat','-struct','CAMELS_US_data')
 end
 
 end

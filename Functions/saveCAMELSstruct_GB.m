@@ -297,7 +297,7 @@ CAMELS_GB_data.T = T;
 
 % save the struct file
 if save_struct
-    save('CAMELS_Matlab/Data/CAMELS_GB_data.mat','CAMELS_GB_data')
+    save('CAMELS_Matlab/Data/CAMELS_GB_data.mat','-struct','CAMELS_GB_data')
 end
 
 end
