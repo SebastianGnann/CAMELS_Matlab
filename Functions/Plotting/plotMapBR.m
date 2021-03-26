@@ -83,8 +83,8 @@ index = [1:length(z)]';
 pos = [100 100 500 400];
 fig = figure('Name',figure_name,'NumberTitle','off','pos',pos);
 ax = axesm('MapProjection','mercator','MapLatLimit',[-32 5],'MapLonLimit',[-74 -35]);
-states = shaperead('brazil_50m.shp', 'UseGeoCoords', true);
-geoshow(ax, states, ...
+shapefile = shaperead('brazil_50m.shp', 'UseGeoCoords', true);
+geoshow(ax, shapefile, ...
     'DisplayType','polygon','DefaultFaceColor','white','DefaultEdgeColor','black') %geoshow
 hold on
 % grid on
@@ -129,7 +129,7 @@ set(dcm_obj,'UpdateFcn',{@myupdatefcn,ID,index})
 
 %% save fig
 if save_figure
-    saveFig(fig,figure_name,figure_path,figure_type)
+    saveFig(fig,strcat('BR_',figure_name),figure_path,figure_type)
 end
 
 end
