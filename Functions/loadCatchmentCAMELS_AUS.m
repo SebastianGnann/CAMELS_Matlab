@@ -25,6 +25,7 @@ if nargin < 10
 end
 
 Q_temp = table2array(Q_table(:,index));
+Q_temp(Q_temp==-99.99) = NaN;
 P_temp = table2array(P_table(:,index));
 PET_temp = table2array(PET_table(:,index));
 Tmax_temp = table2array(Tmax_table(:,index));

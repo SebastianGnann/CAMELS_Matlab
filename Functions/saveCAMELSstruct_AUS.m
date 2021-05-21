@@ -271,14 +271,14 @@ T_date = datenum(table2array(Tmax_table(:,1:3)));
 % Tmin_date = datenum(table2array(Tmin_table(:,1:3)));
 
 fprintf('Loading catchment data (AUS)...\n')
-for i = 4:size(Q_table,2) % loop over all catchments
+for i = 1:size(Q_table,2)-3 % loop over all catchments
     
     if mod(i,100) == 0 % check progress
         fprintf('%.0f/%.0f\n',i,length(CAMELS_AUS_data.station_id))
     end
     
     [P{i}, PET{i}, Q{i}, T{i}] = loadCatchmentCAMELS_AUS(...
-        i,Q_table,Q_date,P_table,P_date,PET_table,PET_date,...
+        i+3,Q_table,Q_date,P_table,P_date,PET_table,PET_date,...
         Tmax_table,Tmin_table,T_date);
     flow_perc_complete(i) = 100*(1-sum(isnan(Q{i}(:,2)))./length(Q{i}(:,2)));
     
