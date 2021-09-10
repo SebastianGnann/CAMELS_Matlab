@@ -1,17 +1,19 @@
 # CAMELS_Matlab
-Loads CAMELS, CAMELS-CL, CAMELS-GB, and CAMELS-BR data and saves data as Matlab struct files.
+Loads CAMELS, CAMELS-CL, CAMELS-GB, CAMELS-BR, and CAMELS-AUS data and saves the data as Matlab struct files.
 The data and the resulting struct files are saved locally, you can find the links to the datasets below.
+There are also some examples of how the CAMELS data can be used, e.g. to calculate signatures with the TOSSH toolbox (https://github.com/TOSSHtoolbox/TOSSH) and to plot them on a map.
+For the plots, the BrewerMap toolbox (https://github.com/TOSSHtoolbox/TOSSH) is used.
 
 To limit file size, only one P and PET product is loaded:
-- for CAMELS US, PET is calculated using a calibrated Priestley-Taylor coefficient which is now set to the default value of 1.26. Observed time series are extracted from the model output files.
-- for CAMELS CL, MSWEP P and HARGREAVES PET are used.
-- for CAMELS GB, PET without interception correction is used.
-- for CAMELS BR, CHIRPS P, GLEAM PET, and CPC T are used.
-- for CAMELS AUS, AWAP P, Morton SILO PET, and AWAP T are used
+- for CAMELS US, PET is calculated using a calibrated Priestley-Taylor coefficient which is now set to the default value of 1.26. Observed time series are extracted from the model output files,
+- for CAMELS CL, MSWEP P and HARGREAVES PET are used,
+- for CAMELS GB, PET without interception correction is used,
+- for CAMELS BR, CHIRPS P, GLEAM PET, and CPC T are used,
+- for CAMELS AUS, AWAP P, Morton SILO PET, and AWAP T are used.
 
 Note that some updates made are not compatible with previous versions of this repository.
 
-Matlab 2020a
+Matlab 2020a was used 
 
 ## Papers describing datasets:
 
