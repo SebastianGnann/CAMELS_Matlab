@@ -18,7 +18,10 @@ mydir = 'CAMELS_Matlab';
 addpath(genpath(mydir));
 
 % figure path
-fig_path = 'CAMELS_Matlab/Figures';
+fig_path = 'CAMELS_Matlab/Figures/';
+if ~(exist(fig_path) == 7) % create one if it does not exist
+    mkdir (fig_path)
+end
 
 %% load useful packages 
 

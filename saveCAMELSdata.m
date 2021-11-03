@@ -60,17 +60,23 @@ clc
 % CAMELS data files should also be in this directory. For example, if we 
 % work in the main Matlab directory (here MATLAB), our folder structure 
 % might look as follows:
-%
 % MATLAB/... (this is the directory we are in)
 % MATLAB/CAMELS_Matlab (this repository contains the code we want to run)
 % MATLAB/CAMELS_US (this folder contains CAMELS US data)
-%                 
+
 % If we want to use a different folder structure, we have to adjust the
 % paths. 
 % We need to add the CAMELS_Matlab repository to the Matlab path, so that
 % we can work with relative paths. 
 mydir = 'CAMELS_Matlab';
 addpath(genpath(mydir));
+
+% The resulting struct files will be stored in a folder named "Data". If 
+% this folder does not exist yet, we have to create it.
+if ~(exist(strcat(mydir,'/Data')) == 7)
+    mkdir (strcat(mydir,'/Data'))
+end
+
 
 %% CAMELS US
 % First, we need to download and extract the CAMELS US data from:

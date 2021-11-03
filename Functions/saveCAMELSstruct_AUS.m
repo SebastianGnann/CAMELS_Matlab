@@ -36,7 +36,7 @@ end
 % CAMELS_AUS/05_hydrometeorology (contains meteorological time series)
 % CAMELS_AUS_Attributes-Indices_MasterTable (contains catchment attributes)
 
-path_catchment_attributes = strcat("CAMELS_AUS/CAMELS_AUS_Attributes-Indices_MasterTable.csv");
+path_catchment_attributes = strcat("CAMELS_AUS/CAMELS_AUS_Attributes&Indices_MasterTable.csv");
 path = "CAMELS_AUS/"; 
 
 if ~(exist(path_catchment_attributes) == 2)
