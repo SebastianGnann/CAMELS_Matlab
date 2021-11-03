@@ -13,7 +13,7 @@ To limit file size, only one P and PET product is loaded:
 
 Note that some updates made are not compatible with previous versions of this repository.
 
-Matlab 2020a was used 
+Matlab 2020a was used.
 
 ## Papers describing datasets:
 
