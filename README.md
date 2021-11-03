@@ -2,7 +2,7 @@
 Loads CAMELS, CAMELS-CL, CAMELS-GB, CAMELS-BR, and CAMELS-AUS data and saves the data as Matlab struct files.
 The data and the resulting struct files are saved locally, you can find the links to the datasets below.
 There are also some examples of how the CAMELS data can be used, e.g. to calculate signatures with the TOSSH toolbox (https://github.com/TOSSHtoolbox/TOSSH) and to plot them on a map.
-For the plots, the BrewerMap toolbox (https://github.com/TOSSHtoolbox/TOSSH) is used.
+For the plots, the BrewerMap toolbox (https://github.com/DrosteEffect/BrewerMap) is used.
 
 To limit file size, only one P and PET product is loaded:
 - for CAMELS US, PET is calculated using a calibrated Priestley-Taylor coefficient which is now set to the default value of 1.26. Observed time series are extracted from the model output files,
